@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import socketIO from "socket.io-client";
 import AskNickname from "./components/AskNickname";
 import MagicNumber from "./components/MagicNumber";
+import WaitPlayer from "./components/WaitPlayers";
+import { toaster } from "evergreen-ui";
+
+const io = socketIO("http://localhost:8080");
 
 const App = () => {
-
-	const io = socketIO("http://localhost:"+ process.env.PORT_SOCKET);
 
 	const [isGameStarted, setGameStarted] = useState(false);
 	const [isWaiting, setIsWaiting] = useState(false);
@@ -26,6 +28,7 @@ const App = () => {
 			toaster.success("Game started", {
 				id: "game-started",
 			});
+			console.log(payload)
 			setPlayers(payload.players);
 		});
 
