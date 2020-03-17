@@ -13,7 +13,6 @@ const App = () => {
 	const [isWaiting, setIsWaiting] = useState(false);
 	const [players, setPlayers] = useState([]);
 
-
 		io.on("event::gameFull", () => {
 			toaster.warning("Game is full");
 		});
@@ -65,7 +64,6 @@ const App = () => {
 						</div>
 					</div>
 				</div>
-
 				<div className="hero-body">
 					<div className="container">
 						<header className="bd-index-header">{renderScreen()}</header>
